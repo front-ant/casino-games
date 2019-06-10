@@ -21,13 +21,20 @@ class App extends Component {
     if (!this.state.loggedIn) {
       event.preventDefault();
       // post input data to the fake database and fetch new data
-      let authCheck = await APICalls.checkLogin(value);
+      if (value) {
+        try
+      {let authCheck = await APICalls.checkLogin(value);
       if (authCheck !== undefined) {
         alert(`Logging in user ${value}`)
         this.setState({loggedIn: true});
       }
-      else {alert('Login failed!')};
+      else {alert('Login failed!')};}
+      catch(error) {alert('Login failed!')}
     }
+    else {
+      alert('Please at least type a username!');
+    }
+  }
     else {
       this.setState({loggedIn: false});
     }
