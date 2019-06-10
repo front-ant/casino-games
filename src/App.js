@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import ReactDOM from "react-dom";
 import MainPage from "./components/MainPage";
 import Login from "./components/Login";
+import * as APICalls from "./APICalls";
+
 
 
 class App extends Component {
@@ -10,16 +12,22 @@ class App extends Component {
     this.state = {
       isLoading: false,
       loggedIn: false,
-      gridView: true
     }
     this.toggleLogin = this.toggleLogin.bind(this);
-
-
   }
-  toggleLogin(event){
+
+
+  async toggleLogin(event, value){
     if (!this.state.loggedIn) {
       event.preventDefault();
-      this.setState({loggedIn: true});
+      let authCheck = await APICalls.checkLogin(value);
+      if (authCheck !== undefined) {
+        alert(`Logging in user ${value}`)
+        this.setState({loggedIn: true});
+      }
+      else {alert('Login failed!')};
+
+
     }
     else {
       this.setState({loggedIn: false});
@@ -31,7 +39,7 @@ class App extends Component {
   render() {
   return (
     <div>
-    {(!this.state.loggedIn ? <Login handleClick={this.toggleLogin}/> : <MainPage handleClick={this.toggleLogin}/>)}
+    {(!this.state.loggedIn ? <Login handleSubmit={this.toggleLogin}/> : <MainPage handleClick={this.toggleLogin}/>)}
     </div>
 
   );
