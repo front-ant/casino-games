@@ -42,12 +42,15 @@ toggleStyles() {
       <div>
         <header>
           <h1>This is the Main Page</h1>
+
+        </header>
+        <nav>
           <button onClick={this.props.handleClick}>Logout</button>
           <div>
             <link rel="stylesheet" type="text/css" href={(this.state.list ? "src/games-container-flex.css" : "src/games-container-grid.css")} />
             <button onClick={this.toggleStyles.bind(this)}>Toggle View</button>
           </div>
-        </header>
+        </nav>
         {(this.state.isLoading ? <div>Loading...</div> :
           (this.state.error ? <div>Something went wrong while trying to fetch the games, try again later!</div> :
             <div className="games-container">
