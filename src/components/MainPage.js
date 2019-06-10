@@ -34,7 +34,8 @@ class MainPage extends Component {
         </header>
         {(this.state.isLoading ? <div>Loading...</div> :
           (this.state.error ? <div>Something went wrong while trying to fetch the games, try again later!</div> :
-            <ul>
+            <div className="games-container">
+              <ul>
               {this.state.games.map(g => (
                 <Game
                 key={g.id}
@@ -43,7 +44,9 @@ class MainPage extends Component {
                 image={g.pic}
                  />)
               )}
-            </ul>))}
+              </ul>
+              </div>
+            ))}
 
       </div>
     );
