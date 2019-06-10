@@ -20,14 +20,13 @@ class App extends Component {
   async toggleLogin(event, value){
     if (!this.state.loggedIn) {
       event.preventDefault();
+      // post input data to the fake database and fetch new data
       let authCheck = await APICalls.checkLogin(value);
       if (authCheck !== undefined) {
         alert(`Logging in user ${value}`)
         this.setState({loggedIn: true});
       }
       else {alert('Login failed!')};
-
-
     }
     else {
       this.setState({loggedIn: false});
@@ -38,6 +37,7 @@ class App extends Component {
 
   render() {
   return (
+    // if logged out, display login page
     <div>
     {(!this.state.loggedIn ? <Login handleSubmit={this.toggleLogin}/> : <MainPage handleClick={this.toggleLogin}/>)}
     </div>

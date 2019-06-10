@@ -6,8 +6,6 @@
 }
 
 
-
-
 .game-entry {
   position: relative;
   border-radius: 30px;
@@ -49,7 +47,7 @@
 }
 
 
-
+/* MEDIA QUERIES*/
 
 @media only screen and (max-width: 600px) {
   .games-container {

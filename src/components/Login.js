@@ -4,6 +4,7 @@ class Login extends Component {
     super(props);
     this.state = {value: ""};
   }
+  //controlled component
   handleChange(event) {
     this.setState({value: event.target.value});
   }
