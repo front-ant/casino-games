@@ -10,6 +10,7 @@
 ## Setup
 1. `git clone https://github.com/front-ant/casino-games`
 1. `npm install`
+1. If necessary, install `json-server` globally: `npm install -g json-server`
 1. Start the `webpack-dev-server`:  `npm run start`
 1. Start the Server for fake login requests: `json-server watch --users.js`
 
