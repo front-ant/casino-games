@@ -2,13 +2,17 @@ import React, {Component} from "react";
 import * as APICalls from "../APICalls";
 import Game from "./Game"
 
+
+
+
 class MainPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoading: false,
       error: false,
-      games: []
+      games: [],
+      list: true
     }
   }
   async componentDidMount() {
@@ -23,6 +27,14 @@ class MainPage extends Component {
     this.setState({error, isLoading: false})}
   }
 
+toggleStyles() {
+  if (this.state.list) {
+    this.setState({list: false})
+  }
+  else {
+    this.setState({list: true})
+  }
+}
 
   render() {
 
@@ -31,11 +43,14 @@ class MainPage extends Component {
         <header>
           <h1>This is the Main Page</h1>
           <button onClick={this.props.handleClick}>Logout</button>
+          <div>
+            <link rel="stylesheet" type="text/css" href={(this.state.list ? "src/games-container-flex.css" : "src/games-container-grid.css")} />
+            <button onClick={this.toggleStyles.bind(this)}>Toggle View</button>
+          </div>
         </header>
         {(this.state.isLoading ? <div>Loading...</div> :
           (this.state.error ? <div>Something went wrong while trying to fetch the games, try again later!</div> :
             <div className="games-container">
-              <ul>
               {this.state.games.map(g => (
                 <Game
                 key={g.id}
@@ -44,8 +59,8 @@ class MainPage extends Component {
                 image={g.pic}
                  />)
               )}
-              </ul>
               </div>
+
             ))}
 
       </div>

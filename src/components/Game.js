@@ -1,6 +1,5 @@
 import React from "react";
 const Game = (props) => (
-  <li>
       <div className="game-entry">
         <img src={props.image} className="game-img"></img>
         <div className="game-text">
@@ -8,7 +7,6 @@ const Game = (props) => (
           <p className="game-description">{props.description}</p>
         </div>
       </div>
-  </li>
 )
 
 export default Game;
