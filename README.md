@@ -13,7 +13,7 @@
 1. `npm install`
 1. If necessary, install `json-server`: `npx json-server`
 1. Start the `webpack-dev-server`:  `npm run start`
-1. Start the Server for fake login requests: `npx json-server watch --users.js`
+1. Start the Server for fake login requests: `npx json-server watch --auth.json`
 
 ## Further Improvements
 * Add pagination
