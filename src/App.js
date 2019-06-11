@@ -18,7 +18,7 @@ class App extends Component {
   componentDidMount() {
     const authToken = window.sessionStorage.getItem("auth_token")
 
-    if (authToken !== null) {
+    if (authToken) {
       this.setState({loggedIn: true});
     }
   }
@@ -42,7 +42,7 @@ class App extends Component {
     }
     else {
       this.setState({loggedIn: false});
-      window.sessionStorage.setItem("auth_token", null);
+      window.sessionStorage.removeItem("auth_token");
     }
 
 
