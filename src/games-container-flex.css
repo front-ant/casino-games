@@ -51,7 +51,13 @@
   .game-entry {
     grid-template-columns: 40% 60%;
     height: 10vh;
-
+  }
+  .game-description {
+    display: none;
+  }
+  .game-title {
+    font-size: 80%;
+    overflow: auto;
   }
 
 }
