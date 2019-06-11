@@ -11,7 +11,6 @@ function generateUsers () {
       "id": id,
       "user": userName,
       "email": userEmail,
-      "auth_token": "yes"
     })
   }
 

@@ -15,29 +15,37 @@ class App extends Component {
     }
     this.toggleLogin = this.toggleLogin.bind(this);
   }
+  componentDidMount() {
+    const authToken = window.sessionStorage.getItem("auth_token")
+
+    if (authToken !== null) {
+      this.setState({loggedIn: true});
+    }
+  }
 
 
   async toggleLogin(event, value){
     if (!this.state.loggedIn) {
       event.preventDefault();
-      // post input data to the fake database and fetch new data
       if (value) {
-        try
-      {let authCheck = await APICalls.checkLogin(value);
-      if (authCheck !== undefined) {
-        alert(`Logging in user ${value}`)
-        this.setState({loggedIn: true});
+        try {
+          APICalls.postUserData(value);
+          let tokenData = await APICalls.getToken();
+          window.sessionStorage.setItem("auth_token", tokenData.auth);
+          this.setState({loggedIn: true})
+        } catch(err) {
+          console.log(err);
+        }
+
       }
-      else {alert('Login failed!')};}
-      catch(error) {alert('Login failed!')}
+      else alert("Please enter a username");
     }
-    else {
-      alert('Please at least type a username!');
-    }
-  }
     else {
       this.setState({loggedIn: false});
+      window.sessionStorage.setItem("auth_token", null);
     }
+
+
   };
 
 
