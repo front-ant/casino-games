@@ -46,7 +46,7 @@ class App extends Component {
   return (
     // if logged out, display login page
     <div>
-    {(!this.state.loggedIn ? <Login handleSubmit={this.toggleLogin}/> : <MainPage handleClick={this.toggleLogin}/>)}
+    {(!this.state.loggedIn ? <Login onSubmit={this.toggleLogin}/> : <MainPage handleClick={this.toggleLogin}/>)}
     </div>
 
   );
