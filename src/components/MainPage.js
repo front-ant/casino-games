@@ -11,6 +11,7 @@ class MainPage extends Component {
       games: [],
       list: true
     }
+    this.toggleStyles = this.toggleStyles.bind(this);
   }
   async componentDidMount() {
     this.setState({isLoading: true});
@@ -45,7 +46,7 @@ toggleStyles() {
           <div>
           {/* switch between stylesheets*/}
             <link rel="stylesheet" type="text/css" href={(this.state.list ? "src/games-container-flex.css" : "src/games-container-grid.css")} />
-            <button onClick={this.toggleStyles.bind(this)}>Toggle View</button>
+            <button onClick={this.toggleStyles}>Toggle View</button>
           </div>
         </nav>
         {/* conditional rendering based on success of fetch request*/}
